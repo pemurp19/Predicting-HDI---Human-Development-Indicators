@@ -74,6 +74,19 @@ Data for each of the features selected is from 2017. We selected data specifical
 | pop_density |   Population density (people per sq. km of land area).  |
 |  HDI (Human Development Index)   |  The Human Development Index (HDI) is a statistic composite index of life expectancy, education (mean years of schooling completed and expected years of schooling upon entering the education system), and per capita income indicators, which is used to rank countries into four tiers of human development.  |
 
+### Dataset Cleaning
+
+World Bank data is not always complete and most datasets pulled from the organization have missing values for a few countries. In order for us to be able to run certain regression models, we need to fill these null values with appropriate data. These null values are not representing values of zero and therefore cannot simply be replaced with a zero but require an actual value in order to negatively impact the accuracy regression models.
+
+The notebook in which the data cleaning process was completed, can be found [here]('.code/Data_Cleaning.csv').
+
+In cleaning the dataset being used in this project, it was clear that values being used to replace the null values needed to be contextual and map as closely to the expected values for the country in question as possible. The process to filling these values was as follows:
+
+1. Each statistic had their metrics pulled to identify the median, 25th percentile and 75th percentile of the statistic 
+2. Each statistic had the list of countries missing a value for the stastic pulled
+3. Our team went through each country and using both our estimations and the results of their geographical and developmental peers, each country was assigned a value of either the median, 25th percentile and 75th percentile of the statistic
+
+
 ---
 
 **Analysis**
