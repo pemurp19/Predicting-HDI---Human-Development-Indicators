@@ -88,14 +88,17 @@ In cleaning the dataset being used in this project, it was clear that values bei
 
 
 ---
+### Analysis:
 
-**Analysis**
+### Regression
 
-Regression
+After data cleaning, a linear regression on all soft features was used without feature engineering to get a baseline model.  Feature engineering was avoiding as our goal was not prediction, but interpretatioin.  This initial model had an r-squared value of 0.89, although an analysis of some coefficients led to strange results.  After looking at the quality of certain source data, some of these features were dropped to get a more appropriate model.
 
-Classification
+Next, ridge and lasso analyses was performed.  Although these models were slightly more highly correlated than the basic linear model, the interpretability was reduced.  Ultimately a linear model was performed using the non-zero Lasso coefficients as features to improve correlation while maintaining interpretive value.
 
-Clustering? look at countries grouped based on HDI Index:
+### Classification
+
+### Clustering? look at countries grouped based on HDI Index:
 
 Human development classification
 HDI classifications are based on HDI fixed cutoff points, which are derived from the quartiles of dis- tributions of the component indicators. The cutoff-points are HDI of less than 0.550 for low human development, 0.550–0.699 for medium human development, 0.700–0.799 for high human development and 0.800 or greater for very high human development.
