@@ -28,7 +28,7 @@ Linear regression
 - Regularization to boost performance
 Clustering
 -Transfer learning
-Ensemble Models
+Random Forest and Neural Networks
 
 **Link to Executive Summary:**
 
@@ -117,7 +117,6 @@ In cleaning the dataset being used in this project, it was clear that values bei
 After data cleaning, a linear regression on all soft features was used without feature engineering to get a baseline model. Feature engineering was avoiding as our goal was not prediction, but interpretatioin. This initial model had an r-squared value of 0.89, although an analysis of some coefficients led to strange results. After looking at the quality of certain source data, some of these features were dropped to get a more appropriate model.
 
 Next, ridge and lasso analyses was performed. Although these models were slightly more highly correlated than the basic linear model, the interpretability was reduced. Ultimately a linear model was performed using the non-zero Lasso coefficients as features to improve correlation while maintaining interpretive value.
-
 
 Regularization to reduce overfitting from original OLS models. 
 Lasso regularization to pick out certain coefficients - re ran OLS, with these features (but without scaling) for inference. 
