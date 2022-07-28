@@ -120,7 +120,8 @@ Next, ridge and lasso analyses was performed. Although these models were slightl
 Regularization to reduce overfitting from original OLS models. 
 Lasso regularization to pick out certain coefficients - re ran OLS, with these features (but without scaling) for inference. 
 
-*Clustering:* 
+*Clustering* 
+
 Clustering was implemented with the goal of transfer learning and boosting the performance of the linear regression model. As mentioned above, countries are grouped based on HDI Index. HDI classifications are assigned by HDI fixed cutoff points, which are derived from the quartiles of distributions of the component indicators. The cutoff-points are HDI of less than 0.550 for low human development, 0.550–0.699 for medium human development, 0.700–0.799 for high human development and 0.800 or greater for very high human development. 
 
 In order to perform both KMeans and DBSCAN, two columns were added for the development description ("low", "medium", "high", and "very high") and the development tier on a corresponding scale where "low" is represented by 0, "medium" by 1, "high" by 2, "very high" by 3. 
