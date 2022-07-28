@@ -30,7 +30,6 @@ Clustering
 -Transfer learning
 Random Forest and Neural Networks
 
-**Link to Executive Summary:**
 
 ---
 
@@ -128,18 +127,11 @@ In order to perform both KMeans and DBSCAN, two columns were added for the devel
 
 Limited impact from clustering as it casued the linear regression model to be more overfit (85% test R-squared compared to the best testing R-squared of 94%). 
 
-
-
-
-
-
-
 ---
 
 ### Findings and Recommendations
 
-**Conclusion:** 
+**Takeaways**
+It is important to note that we've examined data specifically for 2017, and our analysis warrants further exploration of prior and future years. In addition, the data that we've collected is insufficient for many of the more advanced machine learning models (including ensemble and neural networks) which require vast amounts of data. Our observations are limited to the 187 countries included in the data set. 
 
-
-
-**Recommendations:**
+That being said, we can conclude that it's possible to predict HDI index without explicitly including economic factors in the model. The strength of the linear regression model (94.5% training accuracy) demonstrates that "soft features", including fertility rate, rural population percent, and female labor participation rate, can be just as strong indicators of human development as GNI. This does not prove that certain features cause high human development, but rather that countries with high human development tend to have certain characteristics in common (low fertility rates, low percent of the population living rurally, low mortality rates for children under 5, etc). 
