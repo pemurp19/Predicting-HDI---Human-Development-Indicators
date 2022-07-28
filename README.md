@@ -9,13 +9,28 @@
 - high human development (0.700–0.799)
 - very high human development (0.800 or greater) 
 
+### Problem Statement:
+
 The HDI was created to emphasize that people and their capabilities should be the ultimate criteria for assessing the development of a country, not economic growth alone (GDP). [source](https://hdr.undp.org/reports-and-publications/2020-human-development-report/data-readers-guide):
 
-### Problem Statement:
+While the HDI was developed to focus on people that make up each country, it's still significantly tied to a nation's wealth (through the GNI component of its calculation). We're seeking to model features tied to the human development of a country, extracting wealth from the equation. Are we able to extract insights on how certain features impact a country's human development score?
 
 **The goal of this project is to use modeling and explanatory data analysis to see what “soft” features can be used to predict a country's HDI-Index, and spotlight features that countries with high human development scores have in common (outside of GNI, education, and life expectancy).**
 
-The goal is to not only predict a country's HDI index, but to also extract insights on how certain features impact a country's human development score, and whether countries can be clustered based on certain features that significantly impact their development. 
+
+### Table of Contents:
+
+Notebook Order:
+Getting data
+Data cleaning and EDA
+Linear regression 
+- Looked at  null MSE as base but also Simple regression model as our baseline
+- Regularization to boost performance
+Clustering
+-Transfer learning
+Ensemble Models
+
+**Link to Executive Summary:**
 
 ---
 
@@ -76,7 +91,7 @@ Data for each of the features selected is from 2017. We selected data specifical
 
 ### Dataset Cleaning
 
-World Bank data is not always complete and most datasets pulled from the organization have missing values for a few countries. In order for us to be able to run certain regression models, we need to fill these null values with appropriate data. These null values are not representing values of zero and therefore cannot simply be replaced with a zero but require an actual value in order to negatively impact the accuracy regression models.
+World Bank data is not always complete and most datasets pulled from the organization have missing values for a few countries. In order for us to be able to run certain regression models, we need to fill these null values with appropriate data. These null values are not representing values of zero and therefore cannot simply be replaced with a zero but require an actual value in order to not negatively impact the performance of the regression models.
 
 The notebook in which the data cleaning process was completed, can be found [here]('.code/Data_Cleaning.csv').
 
@@ -88,20 +103,34 @@ In cleaning the dataset being used in this project, it was clear that values bei
 
 
 ---
-### Analysis:
+# Software Requirements
+- Pandas
+- Matplotlib
+- Seaborn
+- Scikit-learn
+- TensorFlow / Keras 
 
-### Regression
+### **Analysis**
 
-After data cleaning, a linear regression on all soft features was used without feature engineering to get a baseline model.  Feature engineering was avoiding as our goal was not prediction, but interpretatioin.  This initial model had an r-squared value of 0.89, although an analysis of some coefficients led to strange results.  After looking at the quality of certain source data, some of these features were dropped to get a more appropriate model.
+*Regression*
 
-Next, ridge and lasso analyses was performed.  Although these models were slightly more highly correlated than the basic linear model, the interpretability was reduced.  Ultimately a linear model was performed using the non-zero Lasso coefficients as features to improve correlation while maintaining interpretive value.
+After data cleaning, a linear regression on all soft features was used without feature engineering to get a baseline model. Feature engineering was avoiding as our goal was not prediction, but interpretatioin. This initial model had an r-squared value of 0.89, although an analysis of some coefficients led to strange results. After looking at the quality of certain source data, some of these features were dropped to get a more appropriate model.
 
-### Classification
+Next, ridge and lasso analyses was performed. Although these models were slightly more highly correlated than the basic linear model, the interpretability was reduced. Ultimately a linear model was performed using the non-zero Lasso coefficients as features to improve correlation while maintaining interpretive value.
 
-### Clustering? look at countries grouped based on HDI Index:
 
-Human development classification
-HDI classifications are based on HDI fixed cutoff points, which are derived from the quartiles of dis- tributions of the component indicators. The cutoff-points are HDI of less than 0.550 for low human development, 0.550–0.699 for medium human development, 0.700–0.799 for high human development and 0.800 or greater for very high human development.
+Regularization to reduce overfitting from original OLS models. 
+Lasso regularization to pick out certain coefficients - re ran OLS, with these features (but without scaling) for inference. 
+
+*Clustering:* 
+Clustering was implemented with the goal of transfer learning and boosting the performance of the linear regression model. As mentioned above, countries are grouped based on HDI Index. HDI classifications are assigned by HDI fixed cutoff points, which are derived from the quartiles of distributions of the component indicators. The cutoff-points are HDI of less than 0.550 for low human development, 0.550–0.699 for medium human development, 0.700–0.799 for high human development and 0.800 or greater for very high human development. 
+
+In order to perform both KMeans and DBSCAN, two columns were added for the development description ("low", "medium", "high", and "very high") and the development tier on a corresponding scale where "low" is represented by 0, "medium" by 1, "high" by 2, "very high" by 3. 
+
+Limited impact from clustering as it casued the linear regression model to be more overfit (85% test R-squared compared to the best testing R-squared of 94%). 
+
+
+
 
 
 
